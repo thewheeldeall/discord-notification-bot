@@ -4,7 +4,7 @@
 ```
 BOT_DEBUG=true
 TZ="UTC" # Very important as all times are in UTC
-DSCRD_BOT_TKN="token"
+DSCRD_BOT_TK="token"
 CONFIG_FILE="/path/to/config.json"
 ```
 
