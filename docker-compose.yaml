@@ -1,18 +1,13 @@
 version: "3.8"
 
 services:
-  deadfellaz-automated-deadhunterz:
-    image: bananaztech/deadfellaz-automated-deadhunterz:latest
-    container_name: deadfellaz-automated-deadhunterz-prod
+  discord-notification-bot:
+    image: bananaztech/discord-notification-bot:latest
+    container_name: discord-notification-bot-prod
     restart: always
     environment:
-      DB_PORT: 3306
-      DB_HOST: "example.com"
-      DB_USER: "Key-API"
-      DB_PWD: "example"
-      DB_NAME: "keys"
-
-networks:
-  default:
-    external:
-      name: bots
+      TZ: "UTC"
+      DSCRD_BOT_TK: "OTgxMzE1MDM0NzkxNjkwMzIx.G9kP0u.FhQX27A_7aQt1g-vZwRCkLYnWt0tEzYvJss87U"
+      CONFIG_FILE: "/tmp/bot/config.json"
+    volumes:
+      - ./:/tmp/bot

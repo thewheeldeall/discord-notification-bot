@@ -1,56 +1,33 @@
-## DF Headhunters game
+# Discord bot for notifications
 
-### Environment Info
+## Environment Info
 ```
 BOT_DEBUG=true
 TZ="UTC" # Very important as all times are in UTC
-DB_PORT="3306"
-DB_CONN_SIZE="10"
-DB_HOST="aar.dev"
-DB_USER="userName"
-DB_PWD="a@@dddfefwerfwr"
-DB_NAME="deadfellaz"
-CONFIG_TABLE_NAME="gameConfigs"
-CONFIG_ID="1"
-DSCRD_BOT_TK="BOT.TOKEN.CODE"
-USER_API_URL="https://proxy.bananaz.tech/api/users"
-USER_API_KEY="key"
+DSCRD_BOT_TKN="token"
+CONFIG_FILE="/path/to/config.json"
 ```
 
-### Database Info
-```sql
-CREATE DATABASE IF NOT EXISTS `deadfellaz`;
+## The CONFIG_FILE
+This document is to be stored alongside the bot, in a container environment this file will need to be created and placed in the location you point to with the environment variable.
+
+This file should look like:
+```json
+[
+    {
+        "cron": "0 0 * * *",
+        "channelId": "01234567890",
+        "message": "Hello World"
+    }
+]
 ```
 
-```sql
-CREATE TABLE IF NOT EXISTS `deadfellaz`.`gameConfigs` (
-    ConfigId INT NOT NULL AUTO_INCREMENT,
-    GameUuid VARCHAR(255) NOT NULL,
-    GameChannelId VARCHAR(255) NOT NULL,
-    GameCommand VARCHAR(255) NOT NULL,
-    GameRunning BOOLEAN NOT NULL DEFAULT FALSE,
-    EntriesTableName VARCHAR(255) NOT NULL,
-    CommandCooldown INT, -- In Seconds --
-    StartTime BIGINT NOT NULL,
-    AnswersToGenerate INT NOT NULL,
-    Answers VARCHAR(255) NOT NULL,
-    Projects VARCHAR(255) NOT NULL,
-    Answered VARCHAR(255),
-    Notes VARCHAR(255),
-    PRIMARY KEY (ConfigId))
-```
-
-```sql
-CREATE TABLE IF NOT EXISTS `deadfellaz`.`headhuntersV2Entries` (
-    Id INT NOT NULL AUTO_INCREMENT,
-    UserId VARCHAR(255) NOT NULL,
-    GameUuid VARCHAR(255) NOT NULL,
-    Answer VARCHAR(255) NOT NULL,
-    Created BIGINT NOT NULL,
-    Wallet VARCHAR(255),
-    Winner BOOLEAN NOT NULL DEFAULT FALSE,
-    PRIMARY KEY (Id))
-```
+In this file you have a outermost array which can contain as many of these, as I call them `notification objects` as you want. Each object has 3 properties:
+| Key Name | Description |
+|---|---|
+| cron | This is a typical Cron expression, any errors should be printed on first load |
+| channelId | A channel which is on a server the provided Discord token has access to |
+| message | Any text including supported Discord formatting |
 
 ### Contact
 Aaron Renner <aaron@bananaz.tech>
