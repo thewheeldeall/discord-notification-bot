@@ -1,4 +1,4 @@
-# Discord bot for notifications
+# Discord Bot for Notifications
 
 ## Environment Info
 ```
