@@ -1,4 +1,10 @@
+# Node
 node_modules/*
 build/*
+
+# MacOS
+**/.DS_Store
+
+# Project
 *.env
 config.json

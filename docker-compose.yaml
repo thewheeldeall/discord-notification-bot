@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       TZ: "UTC"
-      DSCRD_BOT_TK: "OTgxMzE1MDM0NzkxNjkwMzIx.G9kP0u.FhQX27A_7aQt1g-vZwRCkLYnWt0tEzYvJss87U"
+      DSCRD_BOT_TK: "abc.def.ghij"
       CONFIG_FILE: "/tmp/bot/config.json"
     volumes:
       - ./:/tmp/bot
